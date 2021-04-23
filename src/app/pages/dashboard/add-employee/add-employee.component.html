@@ -1,0 +1,92 @@
+<hr>
+<div class="row">
+    <div class="col-lg-6">
+      <form #employeeregistrationform="ngForm"  autocomplete="off"> 
+      <nb-card>
+        <nb-card-header>Create Employee</nb-card-header>
+        <nb-card-body>
+          <input type="text" nbInput fullWidth placeholder="Employee ID"  name="empId" [(ngModel)]="employee.empId">
+          <input type="text" nbInput fullWidth placeholder="Full Name" name="fullName" [(ngModel)]="employee.fullName">
+
+          <input type="text" nbInput fullWidth placeholder="Job Title" name="jobTitle" [(ngModel)]="employee.jobTitle">
+
+          <nb-select  fullWidth placeholder="Department" name="department" [(ngModel)]="employee.department">
+            <nb-option value="Designers">Designers</nb-option>
+            <nb-option value="Developers">Developers</nb-option>
+            <nb-option value="Testers">Testers</nb-option>
+            <nb-option value="Managers">Managers</nb-option>
+          </nb-select>
+
+          <nb-select  fullWidth placeholder="Location" name="location" [(ngModel)]="employee.location">
+            <nb-option value="Hyderabad">Hyderabad</nb-option>
+            <nb-option value="Channai">Channai</nb-option>
+            <nb-option value="Bangalore">Bangalore</nb-option>
+            <nb-option value="Mumbai">Mumbai</nb-option>
+            <nb-option value="Others">Others</nb-option>
+          </nb-select>
+
+          <input type="number" nbInput fullWidth  placeholder="Age" name="age" [(ngModel)]="employee.age">
+
+          <input type="text" nbInput fullWidth  placeholder="salary" name="salary" [(ngModel)]="employee.salary">
+         
+          <button type="submit" *ngIf="isUpdate == false" (click)="createEmployee()" class="btn btn-primary" nbButton  hero>
+           Save
+          </button>
+          <button type="submit" *ngIf="isUpdate == true" (click)="updateEmployee()" class="btn btn-primary" nbButton  hero>
+            Update
+           </button>
+        </nb-card-body>
+      </nb-card>
+      </form>
+    </div>
+  
+    <div class="col-lg-6">
+  
+    
+      <nb-card>
+        <nb-card-header>Employee ID</nb-card-header>
+        <nb-card-body>
+         {{employee.empId?employee.empId: '--'}}
+        </nb-card-body>
+      </nb-card>
+      <nb-card>
+        <nb-card-header>Full Name</nb-card-header>
+        <nb-card-body>
+         {{employee.fullName?employee.fullName: '--'}}
+        </nb-card-body>
+        
+      </nb-card>
+      <nb-card>
+        <nb-card-header>Job Title</nb-card-header>
+        <nb-card-body>
+         {{employee.jobTitle?employee.jobTitle: '--'}}
+        </nb-card-body>
+      </nb-card>
+      <nb-card>
+        <nb-card-header>Department</nb-card-header>
+        <nb-card-body>
+          {{employee.department?employee.department: '--'}}
+        </nb-card-body>
+      </nb-card>
+      <nb-card>
+        <nb-card-header>Location</nb-card-header>
+        <nb-card-body>
+          {{employee.location?employee.location: '--'}}
+        </nb-card-body>
+      </nb-card>
+      <nb-card>
+        <nb-card-header>Age</nb-card-header>
+        <nb-card-body>
+          {{employee.age?employee.age: '--'}}
+        </nb-card-body>
+      </nb-card>
+      <nb-card>
+        <nb-card-header>Salary</nb-card-header>
+        <nb-card-body>
+          {{employee.salary?employee.salary: '--'}}
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  
+  

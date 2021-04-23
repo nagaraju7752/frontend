@@ -1,0 +1,66 @@
+<h4>Department</h4>
+<div class="row" >
+  
+  <div class="col-xxxl-4 col-md-4">
+    <canvas id="canvas"></canvas>
+  </div>
+  <div class="col-xxxl-2 col-md-2" >
+    <!-- <ngx-status-card [title]="statusCard.title" [type]="statusCard.type">
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card> -->
+   
+    <div class="card">
+      <div class="container">
+        <h4 class="c_count"><b>{{developers.length}}</b></h4> 
+        <p class="roles_count">Developers</p> 
+      </div>
+    </div>
+  </div>
+  <div class="col-xxxl-2 col-md-2" >
+    <!-- <ngx-status-card [title]="statusCard.title" [type]="statusCard.type">
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card> -->
+    <div class="card">
+      <div class="container">
+        <h4 class="c_count"><b>{{designners.length}}</b></h4> 
+        <p class="roles_count">Designers</p> 
+      </div>
+    </div>
+  </div>
+  <div class="col-xxxl-2 col-md-2" >
+    <!-- <ngx-status-card [title]="statusCard.title" [type]="statusCard.type">
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card> -->
+    <div class="card">
+      <div class="container">
+        <h4 class="c_count"><b>{{testers.length}}</b></h4> 
+        <p class="roles_count">Testers</p> 
+      </div>
+    </div>
+  </div>
+  <div class="col-xxxl-2 col-md-2" >
+    <!-- <ngx-status-card [title]="statusCard.title" [type]="statusCard.type">
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card> -->
+    <div class="card">
+      <div class="container">
+        <h4 class="c_count"><b>{{managers.length}}</b></h4> 
+        <p class="roles_count">Managers</p> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="pagePath == 'Create Employee'">
+  <div class="col-xxxl-12 col-xl-12">
+    <ngx-add-employee [selectedEmployee]="childEmployeeData" (employeeDetailsAddEdit)="updatedEmloyee($event)"></ngx-add-employee>  
+  </div>
+
+ 
+</div>
+
+<div class="row" id="emplist" *ngIf="pagePath == 'Dashboard'">
+  <div class="col-xxxl-12 col-xl-12">
+    <ngx-employee-list (employeeDetails)="getselectedEmployee($event)"></ngx-employee-list>
+  </div>
+</div>

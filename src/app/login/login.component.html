@@ -1,0 +1,81 @@
+<div class="container">
+           
+    <header>
+        <h1>Login and Registration Form</h1>
+        
+    </header>
+    <section>				
+        <div id="container_demo" >
+            <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+            <a class="hiddenanchor" id="toregister"></a>
+            <a class="hiddenanchor" id="tologin"></a>
+            <div id="wrapper">
+                <div id="login" class="animate form">
+                    <form #firstloginform="ngForm" (ngSubmit)="doLogin()" autocomplete="off"> 
+                        <h1>Log in</h1> 
+                        <p> 
+                            <label for="username" class="uname" > Your email </label>
+                            <input id="username" name="username" #username="ngModel" [(ngModel)]="user.username" required="required" type="email" placeholder="mymail@mail.com"/>
+
+                        </p>
+                        <span *ngIf="((username.invalid && firstloginform.submitted)|| (username.errors && username.touched))"
+                class='fa fa-info-circle errspan'> email is required </span>
+                        <p> 
+                            <label for="password" class="youpasswd"> Your password </label>
+                            <input id="password" name="password"#password="ngModel"  [(ngModel)]="user.password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$%]).{8,20})" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                        </p>
+                        <span *ngIf="((password.invalid && firstloginform.submitted) || (password.errors && password.touched))">
+                            <span class='fa fa-info-circle errspan' *ngIf="password.errors.required"> Password is required</span>
+                            <span class='fa fa-info-circle errspan' *ngIf="password.errors.pattern"> Password must be 8-20 characters and have at least one uppercase letter, one lowercase letter, one special character(@,$,% are allowed) and one number</span>
+                          </span>
+                        <p class="keeplogin"> 
+                            
+                            <label for="loginkeeping" (click)="navigateResetPassword()">Forgot Password</label>
+                        </p>
+                        <p class="signin button"> 
+                            <input type="submit" value="Sign In" [disabled]="firstloginform.invalid"/> 
+                        </p>
+                        <p class="change_link">
+                            Not a member yet ?
+                            <a href="/login#toregister" class="to_register">Join us</a>
+                        </p>
+                    </form>
+                </div>
+
+                <div id="register" class="animate form">
+                    <form #firstRegisterform="ngForm" (ngSubmit)="doRegistration()" autocomplete="off"> 
+                        <h1> Sign up </h1> 
+                        <p> 
+                            <label for="usernamesignup" class="uname" >Your username</label>
+                            <input id="usernamesignup" #name="ngModel" name="usernamesignup" [(ngModel)]="user.name" required="required" type="text" placeholder="mysuperusername690" />
+                        </p>
+                        <span *ngIf="((name.invalid && firstRegisterform.submitted)|| (name.errors && name.touched))"
+                        class='fa fa-info-circle errspan'> Name is required </span>
+                        <p> 
+                            <label for="emailsignup" class="youmail"  > Your email</label>
+                            <input id="emailsignup" name="emailsignup" #email="ngModel" required="required" [(ngModel)]="user.email" type="email" placeholder="mysupermail@mail.com"/> 
+                        </p>
+                        <span *ngIf="((email.invalid && firstRegisterform.submitted)|| (email.errors && email.touched))"
+                        class='fa fa-info-circle errspan'> email is required </span>
+                        <p> 
+                            <label for="passwordsignup" class="youpasswd" >Your password </label>
+                            <input id="passwordsignup" name="passwordsignup" #passwordd="ngModel" required="required" [(ngModel)]="user.password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$%]).{8,20})" type="password" placeholder="eg. X8df!90EO"/>
+                        </p>
+                        <span *ngIf="((passwordd.invalid && firstRegisterform.submitted) || (passwordd.errors && passwordd.touched))">
+                            <span class='fa fa-info-circle errspan' *ngIf="passwordd.errors.required"> Password is required</span>
+                            <span class='fa fa-info-circle errspan' *ngIf="passwordd.errors.pattern"> Password must be 8-20 characters and have at least one uppercase letter, one lowercase letter, one special character(@,$,% are allowed) and one number</span>
+                          </span>
+                        <p class="signin button"> 
+                            <input type="submit" value="Sign up" [disabled]="firstRegisterform.invalid"/> 
+                        </p>
+                        <p class="change_link">  
+                            Already a member ?
+                            <a href="/login#tologin" class="to_register"> Go and log in </a>
+                        </p>
+                    </form>
+                </div>
+                
+            </div>
+        </div>  
+    </section>
+</div>

@@ -1,0 +1,28 @@
+tr,td {
+    color: #ffff;
+    text-align: center;
+}
+
+tr th{
+    text-align: center;
+    color: #598bff;
+    font-weight: bold;
+}
+
+.edit_icon {
+    position: relative;
+    left: 0px;
+    cursor: pointer;
+}
+.del_icon{
+    position: relative;
+    left: 15px;
+    cursor: pointer;
+}
+.search_input{
+    float: right;
+}
+.search_by_loc{
+    position: relative;
+    left: 30px;
+}

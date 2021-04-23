@@ -1,0 +1,70 @@
+<div class="container">
+  <hr>
+    <h4>List Of Employees</h4>
+    <div class="row">
+      <div class="col-6">
+
+      </div>
+      <div class="col-6">
+        
+        <nb-card>
+         
+          <nb-card-body>
+            <nb-select   placeholder="Department"  (selectedChange)="filterByDepartyment($event)">
+              <nb-option value="All">All</nb-option>
+              <nb-option value="Designers">Designers</nb-option>
+              <nb-option value="Developers">Developers</nb-option>
+              <nb-option value="Testers">Testers</nb-option>
+              <nb-option value="Developers">Managers</nb-option>
+            </nb-select>
+            <nb-select  placeholder="Location" (selectedChange)="filterByLocation($event)" class="search_by_loc">
+              <nb-option value="All">All</nb-option>
+              <nb-option value="Hyderabad">Hyderabad</nb-option>
+              <nb-option value="Channai">Channai</nb-option>
+              <nb-option value="Bangalore">Bangalore</nb-option>
+              <nb-option value="Mumbai">Mumbai</nb-option>
+              <nb-option value="Others">Others</nb-option>
+            </nb-select>
+            <input type="text" placeholder="search" nbInput class="search_input" [(ngModel)]="searchItem">
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+    <hr>
+    <div> 
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Full Name</th>
+          <th>Job Title</th>
+          <th>Department</th>
+          <th>Location</th>
+          <th>Age</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeList  | paginate: { itemsPerPage: 3, currentPage: p } | filter:searchItem">
+          <td>{{employee.emp_id}}</td>
+          <td>{{employee.full_name}}</td>
+          <td>{{employee.job_title}}</td>
+          <td>{{employee.department}}</td>
+          <td>{{employee.location}}</td>
+          <td>{{employee.age}}</td>
+          <td>{{employee.salary | currency:'Rs.'}}</td>
+          <td>
+            <span><i class="fa fa-edit edit_icon" (click)="editEmployeeData(employee)"></i></span>
+            <span><i class="fa fa-trash del_icon" (click)="deleteEmployeeData(employee)"></i></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8" align="right">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
